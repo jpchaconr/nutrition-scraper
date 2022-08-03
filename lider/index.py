@@ -21,8 +21,14 @@ access = auth_response.json()["access"]
 with open('products_urls.txt', 'r', encoding='utf-8') as file:
     links = list(map(lambda x: x.strip(), file.readlines()))
 
-for url in links[:1]:
-    name, size, brand, nutrition_table = get_product_data(url)
+for url in links[15:]:
+    print('----\n' + url + '----\n')
+    try:
+        name, size, brand, nutrition_table = get_product_data(url)
+    except Exception as e:
+        print('Error:', url)
+        continue
+
     product = { "name": name, "brand": brand, "country": country }
     nutrition = build_nutrition_dict(nutrition_table)
     
@@ -30,7 +36,11 @@ for url in links[:1]:
     # Product
     product_response = product_request.add_product(product, access)
     product_data = product_response.json()
-    product_id = product_data["id"]
+    try:
+        product_id = product_data["id"]
+    except:
+        print(product_data)
+        continue
 
     # Nutrition
     nutrition["product"] = product_id
