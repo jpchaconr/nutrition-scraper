@@ -21,7 +21,7 @@ access = auth_response.json()["access"]
 with open('products_urls.txt', 'r', encoding='utf-8') as file:
     links = list(map(lambda x: x.strip(), file.readlines()))
 
-for url in links[15:]:
+for url in links[:3]:
     print('----\n' + url + '----\n')
     try:
         name, size, brand, nutrition_table = get_product_data(url)
