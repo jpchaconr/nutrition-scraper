@@ -1,5 +1,5 @@
 nutrition_names_map = {
-    "sugar": ['Azúcares totales (g)', 'Azúcares Totales (g)', 'Azúcares totales (mg)'],
+    "sugar": ['Azúcares totales (g)', 'Azúcares Totales (g)', 'Azúcares totales (mg)', 'Azúcares totales (g)'],
     "fiber": ['Fibra (g)'],
     "monounsaturated_fats": ['Grasas monoinsaturadas (g)', 'Grasas Monoinsaturadas (g)'],
     "polyunsaturated_fats": ['Grasas poliinsaturadas (g)', 'Grasas Polinsaturadas (g)', 'Grasas Poliinsaturadas (g)'],
@@ -42,6 +42,10 @@ def build_nutrition_dict(nutrition_table):
             if nutrition_info[2] == "mg":
                 nutrition_info[1] = nutrition_info[1] / 1000
             nutrition["cholesterol"] = nutrition_info[1]
+        elif nutrition_info[0] in nutrition_names_map['sugar']:
+            if nutrition_info[2] == "mg":
+                nutrition_info[1] = nutrition_info[1] / 1000
+            nutrition["sugar"] = nutrition_info[1]
         elif nutrition_info[0] in nutrition_names_map['protein']:
             nutrition["protein"] = nutrition_info[1]
     return nutrition
