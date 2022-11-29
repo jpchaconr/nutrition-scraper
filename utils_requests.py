@@ -40,3 +40,10 @@ class NutritionRequests:
         json=data,
     )
 
+  def add_measure(self, id, data, access):
+    url = f"{self.main_url}nutrition/{id}/measures/"
+    return requests.post(
+      url=url,
+      headers={"Authorization": access},
+      json=data,
+    )

@@ -19,35 +19,35 @@ def build_nutrition_dict(nutrition_table):
         if nutrition_info[0] in nutrition_names_map['energy']:
             if nutrition_info[2] == 'kJ':
                 nutrition_info[1] = kJ_to_kCal(nutrition_info[1])
-            nutrition["energy"] = nutrition_info[1]
+            nutrition["energy"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['fiber']:
-            nutrition["fiber"] = nutrition_info[1]
+            nutrition["fiber"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['monounsaturated_fats']:
-            nutrition["monounsaturated_fats"] = nutrition_info[1]
+            nutrition["monounsaturated_fats"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['polyunsaturated_fats']:
-            nutrition['polyunsaturated_fats'] = nutrition_info[1]
+            nutrition['polyunsaturated_fats'] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['saturated_fats']:
-            nutrition["saturated_fats"] = nutrition_info[1]
+            nutrition["saturated_fats"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['trans_fats']:
-            nutrition["trans_fats"] = nutrition_info[1]
+            nutrition["trans_fats"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['total_fats']:
-            nutrition["total_fats"] = nutrition_info[1]
+            nutrition["total_fats"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['carbohydrates']:
-            nutrition["carbohydrates"] = nutrition_info[1]
+            nutrition["carbohydrates"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['sodium']:
             if nutrition_info[2] == "mg":
                 nutrition_info[1] = nutrition_info[1] / 1000
-            nutrition["sodium"] = nutrition_info[1]
+            nutrition["sodium"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['cholesterol']:
             if nutrition_info[2] == "mg":
                 nutrition_info[1] = nutrition_info[1] / 1000
-            nutrition["cholesterol"] = nutrition_info[1]
+            nutrition["cholesterol"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['sugar']:
             if nutrition_info[2] == "mg":
                 nutrition_info[1] = nutrition_info[1] / 1000
-            nutrition["sugar"] = nutrition_info[1]
+            nutrition["sugar"] = round(nutrition_info[1], 3)
         elif nutrition_info[0] in nutrition_names_map['protein']:
-            nutrition["protein"] = nutrition_info[1]
+            nutrition["protein"] = round(nutrition_info[1], 3)
     return nutrition
 
 def kJ_to_kCal(kilo_joules):

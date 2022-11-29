@@ -21,7 +21,12 @@ def get_product_data(url):
     size = ' '.join(info.split(' ')[-2:])
     brand = product_detail.find('a', class_='product-brand').text
     nutrition_table = get_nutrition(product_detail)
-    return name, size, brand, nutrition_table
+    portion = get_portion(product_detail)
+    amount = int(portion.split('(')[-1].split(' ')[0])
+    return name, size, brand, nutrition_table, portion, amount
+
+def get_portion(product_detail):
+    return product_detail.find('div', class_='product-table-container').find('div').find('div').find_all('span')[1].text
 
 def get_nutrition(product_detail):
     prod_info = product_detail.find('div', class_='product-table-container')

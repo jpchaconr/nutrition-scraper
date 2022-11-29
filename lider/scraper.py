@@ -43,6 +43,7 @@ def get_nutrition_html(parsed_html):
 
     thead = table.thead
     reference_size = thead.find_all('th')[1].string
+    # portion find by text regex like youtube video
     tbody = table.tbody.tbody
     trs = tbody.find_all('tr')
     nutri_descriptors = map(lambda x: [x.find_all('td')[0].string, float(x.find_all('td')[1].string)], trs)
@@ -63,6 +64,7 @@ def get_nutrition_js(url):
     tbody = table.tbody
     trs = tbody.find_all('tr')
     reference_size = trs[1].find('strong').text
+    # find portion in the first tr of the table
     if trs[0].find('strong').string != "Porción:":
         raise NotFoundError('not table')
     
